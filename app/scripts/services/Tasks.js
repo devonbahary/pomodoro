@@ -11,13 +11,37 @@
 
 (function() {
     function Tasks($firebaseArray) {
+
+        /*
+            (Object)
+                → the return object containing the service's features
+        */
+        var Tasks = {};
+
+        /*
+                → the Firebase database reference to 'tasks' data
+        */
         var ref = firebase.database().ref('/tasks');
 
-        var tasks = $firebaseArray(ref);
+        /*
+            ($firebaseArray)
+                → a $firebaseArray of task objects
+        */
+        Tasks.all = $firebaseArray(ref);
 
-        return {
-            all: tasks
-        };
+        /*
+            Tasks.addTask(String)
+                => Takes a task 'name' String and writes a task object to the
+                  database, including a timestamp for ordering.
+        */
+        Tasks.addTask = function(name) {
+            Tasks.all.$add({
+                name: name,
+                timestamp: firebase.database.ServerValue.TIMESTAMP
+            });
+        }
+
+        return Tasks;
     }
 
     angular

@@ -14,15 +14,15 @@
         function timer(scope, element, attrs) {
 
             /*
-                timer (null or Object)
-                  → the $interval object returned from starting a timer, kept as
-                  a reference to cancel the timer later
+                (null or Object)
+                    → the $interval object returned from starting a timer, kept
+                      as a reference to cancel the timer later
             */
             var timer = null;
 
             /*
-                timerState (String)
-                  → indicates timer state
+                (String)
+                    → indicates timer state
                         'idle'    : user isn't engaged with the timer
                         'working' : user is working
                         'break'   : user is taking a break
@@ -30,23 +30,23 @@
             var timerState = 'idle';
 
             /*
-                workCompleted (Boolean)
-                  → a flag indicating if user has most recently completed a work
-                  session
+                (Boolean)
+                    → a flag indicating if user has most recently completed a work
+                      session
             */
             var workCompleted = false;
 
             /*
-                completedWorkSessions (Number)
-                  → a counter of completed work sessions (after 4, a longer
-                  break is permitted)
+                (Number)
+                    → a counter of completed work sessions (after 4, a longer
+                      break is permitted)
             */
             var completedWorkSessions = 0;
 
             /*
-                audioChime (Object)
-                  → an audio file for the chime sound effect played when the
-                  timer reaches 0
+                (Object)
+                    → an audio file for the chime sound effect played when the
+                      timer reaches 0
             */
             var audioChime = new buzz.sound('/assets/audio/chime.mp3', {
                 preload: true,
@@ -55,7 +55,7 @@
 
             /*
                 beginTimer()
-                  => Begins an interval function that decrements the timer.
+                    => Begins an interval function that decrements the timer.
             */
             function beginTimer() {
                 scope.timerCount--;
@@ -76,8 +76,8 @@
 
             /*
                 resetTimer()
-                  => Cancels the interval function from 'beginTimer()' and
-                  resets the time.
+                    => Cancels the interval function from 'beginTimer()' and
+                      resets the time.
             */
             function resetTimer() {
                 $interval.cancel(timer);
@@ -89,22 +89,22 @@
 
             /*
                 isLongBreak()
-                  => Returns true if a work session has been completed and it is
-                  the fourth consecutive without a long break.
+                    => Returns true if a work session has been completed and it
+                      is the fourth consecutive without a long break.
             */
             function isLongBreak() {
                 return workCompleted && completedWorkSessions && !(completedWorkSessions % 4);
             }
 
             /*
-                scope.timerCount (Number)
+                (Number)
                   → the current progress into the timer
             */
             scope.timerCount = INTERVAL_WORK;
 
             /*
                 scope.onBtnTimer()
-                  => Starts or resets the timer according to 'timerState'.
+                    => Starts or resets the timer according to 'timerState'.
             */
             scope.onBtnTimer = function() {
                 switch(timerState) {
@@ -118,7 +118,7 @@
 
             /*
                 scope.isIdle()
-                  => Returns true if timer is in 'idle' state.
+                    => Returns true if timer is in 'idle' state.
             */
             scope.isIdle = function() {
                 return timerState === 'idle';
@@ -126,7 +126,7 @@
 
             /*
                 scope.isTicking()
-                  => Returns true if timer is in 'working' or 'break' state.
+                    => Returns true if timer is in 'working' or 'break' state.
             */
             scope.isTicking = function() {
                 return timerState === 'working' || timerState === 'break';
@@ -134,8 +134,8 @@
 
             /*
                 scope.isWorkCompleted()
-                  => Returns true if user has fulfilled the entirety of a work
-                  session.
+                    => Returns true if user has fulfilled the entirety of a work
+                      session.
             */
             scope.isWorkCompleted = function() {
                 return workCompleted;

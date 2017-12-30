@@ -11,11 +11,20 @@
 
 (function() {
     function PomodoroCtrl(Tasks) {
+        /*
+            ($firebaseArray)
+                → a $firebaseArray of task objects from the 'Tasks' service
+        */
         this.tasks = Tasks.all;
 
 
+        /*
+            this.submit(String)
+                => Takes a task 'item' String and adds a new tasks database
+                  entry via the 'Tasks' service.
+        */
         this.submit = function(item) {
-            this.tasks.$add(item)
+            Tasks.addTask(item);
             document.getElementById('form-add-task').reset();
         }
     }

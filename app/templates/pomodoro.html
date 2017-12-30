@@ -23,12 +23,12 @@
                 </label>
             </div>
         </form>
-        <div class="task-container task-item" ng-repeat="task in pomodoro.tasks" ng-class="{'bga-gray': $even, 'bga-dark': $odd}">
+        <div class="task-container task-item" ng-repeat="task in pomodoro.tasks | orderBy: task.timestamp : true" ng-class="{'bga-gray': $even, 'bga-dark': $odd}">
             <div class="task-btn btn" ng-class="{'bg-gray': $even, 'bg-dark': $odd}">
                 <span class="ion-android-checkbox-outline btn-icon"></span>
             </div>
             <div class="task-text-box">
-              <span class="task-text">{{ task.$value }}</span>
+              <span class="task-text">{{ task.name }}</span>
             </div>
         </div>
 

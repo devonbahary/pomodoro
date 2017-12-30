@@ -6,5 +6,31 @@
 -->
 
 <main id="view-pomodoro" class="view">
-    <pomodoro-timer></pomodoro-timer>
+    <!-- Pomodoro Timer (directive: pomodoroTimer.js) -->
+    <section id="pomodoro-directive">
+        <pomodoro-timer></pomodoro-timer>
+    </section>
+    <section id="tasks" class="txt-body">
+        <header id="tasks-header" class="bg-darker">
+            <span class="ion-android-menu"></span>
+        </header>
+        <form id="form-add-task" name="newTask" ng-submit="pomodoro.submit(task)">
+            <div id="add-task-item" class="task-container">
+                <input type="text" ng-model="task" rows="2" minlength="1" maxlength="93" required>
+                <label class="task-btn btn bg-gray">
+                <input type="submit">
+                <span class="ion-plus btn-icon txt-gray"></span>
+                </label>
+            </div>
+        </form>
+        <div class="task-container task-item" ng-repeat="task in pomodoro.tasks" ng-class="{'bga-gray': $even, 'bga-dark': $odd}">
+            <div class="task-btn btn" ng-class="{'bg-gray': $even, 'bg-dark': $odd}">
+                <span class="ion-android-checkbox-outline btn-icon"></span>
+            </div>
+            <div class="task-text-box">
+              <span class="task-text">{{ task.$value }}</span>
+            </div>
+        </div>
+
+    </section>
 </main>

@@ -19,6 +19,7 @@
     <!-- Application Stylesheets -->
     <link rel="stylesheet" href="/styles/main.css">
     <link rel="stylesheet" href="/styles/pomodoro.css">
+    <link rel="stylesheet" href="/styles/pomodoroTimer.css">
 </head>
 <body>
     <ui-view>
@@ -29,8 +30,25 @@
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
     <!-- AngularUI Router -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.4.2/angular-ui-router.min.js"></script>
+    <!-- Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/4.8.1/firebase.js"></script>
+    <!-- AngularFire -->
+    <script src="https://cdn.firebase.com/libs/angularfire/2.3.0/angularfire.min.js"></script>
+    <script>
+        // Initialize Firebase
+        var config = {
+            apiKey: "AIzaSyCvFR3RaBlYVjKmD9fkxxX5BCiBNQ2ckvc",
+            authDomain: "pomodoro-70a76.firebaseapp.com",
+            databaseURL: "https://pomodoro-70a76.firebaseio.com",
+            projectId: "pomodoro-70a76",
+            storageBucket: "pomodoro-70a76.appspot.com",
+            messagingSenderId: "290209729925"
+        };
+        firebase.initializeApp(config);
+    </script>
     <!-- Application Scripts -->
     <script src="/scripts/app.js"></script>
+    <script src="/scripts/services/Tasks.js"></script>
     <script src="/scripts/controllers/PomodoroCtrl.js"></script>
     <script src="/scripts/directives/pomodoroTimer.js"></script>
     <script src="/scripts/filters/secondsToDateTime.js"></script>

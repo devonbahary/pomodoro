@@ -8,6 +8,11 @@
    ---------------------------------------------------------------------------+
 */
 
+/*
+  potential colors
+    rgb(255, 136, 77) orange
+    rgb(65,132,225) blue
+*/
 
 * {
     margin: 0;
@@ -51,16 +56,24 @@
 }
 
 
+.bg-gray {
+    background: rgb(50, 50, 50);
+}
+
 .bg-dark {
-  background: rgb(50, 50, 50);
+    background: rgb(37, 37, 37);
 }
 
 .bg-darker {
-  background: rgb(37, 37, 37);
+    background: rgb(25, 25, 25);
+}
+
+.bga-gray {
+  background: rgba(75, 75, 75, 0.7);
 }
 
 .bga-dark {
-  background: rgba(25, 25, 25, 0.7);
+    background: rgba(25, 25, 25, 0.7);
 }
 
 

@@ -12,11 +12,11 @@
         </div>
         <div id="btn-timer" class="bg-dark btn"
           ng-click="onBtnTimer()" ng-show="isIdle()">
-            <span class="ion-clock btn-icon"></span>
+            <span class="btn-icon" ng-class="{'ion-android-stopwatch': !isWorkCompleted(), 'ion-android-walk': isWorkCompleted()}"></span>
         </div>
         <div id="btn-timer" class="bg-darker btn"
-          ng-click="onBtnTimer()" ng-show="isEngaged()">
-            <span class="ion-android-refresh btn-icon"></span>
+          ng-click="onBtnTimer()" ng-show="isTicking()">
+            <span class="ion-android-refresh btn-icon txt-gray"></span>
         </div>
     </div>
 

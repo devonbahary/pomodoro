@@ -12,62 +12,105 @@
 (function() {
     function pomodoroTimer($interval, INTERVAL_WORK, INTERVAL_BREAK) {
         function timer(scope, element, attrs) {
+
             /*
                 timer (null or Object)
                   → the $interval object returned from starting a timer, kept as
                   a reference to cancel the timer later
             */
-            scope.timer = null;
+            var timer = null;
 
             /*
-                timerCount (Number)
+                timerState (String)
+                  → indicates timer state
+                        'idle'    : user isn't engaged with the timer
+                        'working' : user is working
+                        'break'   : user is taking a break
+            */
+            var timerState = 'idle';
+
+            /*
+                workCompleted (Boolean)
+                  → a flag indicating if user has completed a work session
+            */
+            var workCompleted = false;
+
+            /*
+                beginTimer()
+                  => Begins an interval function that decrements the timer.
+            */
+            function beginTimer() {
+                scope.timerCount--;
+                var delay = 1000; // every 1s
+                timer = $interval(function() {
+                    scope.timerCount--;
+                    if (!scope.timerCount) {
+                        $interval.cancel(timer);
+                        workCompleted = !workCompleted;
+                        resetTimer();
+                    }
+                }, delay)
+                timerState = workCompleted ? 'break' : 'working';
+            }
+
+            /*
+                resetTimer()
+                  => Cancels the interval function from 'beginTimer()' and
+                  resets the time.
+            */
+            function resetTimer() {
+                $interval.cancel(timer);
+                timerState = 'idle';
+                scope.timerCount = workCompleted ? INTERVAL_BREAK : INTERVAL_WORK;
+            }
+
+            /*
+                scope.timerCount (Number)
                   → the current progress into the timer
             */
             scope.timerCount = INTERVAL_WORK;
 
             /*
-                timerState (String)
-                  → a flag indicating timer state
-                        'idle'    : user isn't engaged with the timer
-                        'working' : user is working
-                        'break'   : user is taking a break
+                scope.onBtnTimer()
+                  => Starts or resets the timer according to 'timerState'.
             */
-            scope.timerState = 'idle';
-
             scope.onBtnTimer = function() {
-                switch(scope.timerState) {
-                case 'idle':
-                    scope.timerCount--;
-                    var delay = 1000; // every 1s
-                    scope.timer = $interval(function() {
-                        scope.timerCount--;
-                    }, delay)
-                    scope.timerState = 'working';
-                    break;
-                case 'working':
-                    $interval.cancel(scope.timer);
-                    scope.timerState = 'idle';
-                    scope.timerCount = INTERVAL_WORK;
-                    break;
+                switch(timerState) {
+                    case 'idle':
+                        beginTimer();
+                        break;
+                    default:
+                        resetTimer();
                 }
             }
 
             /*
-                isIdle()
+                scope.isIdle()
                   => Returns true if timer is in 'idle' state.
             */
             scope.isIdle = function() {
-                return scope.timerState === 'idle';
+                return timerState === 'idle';
             }
 
             /*
-                isEngaged()
+                scope.isTicking()
                   => Returns true if timer is in 'working' or 'break' state.
             */
-            scope.isEngaged = function() {
-                return scope.timerState === 'working' || scope.timerState === 'break';
+            scope.isTicking = function() {
+                return timerState === 'working' || timerState === 'break';
             }
+
+            /*
+                scope.isWorkCompleted()
+                  => Returns true if user has fulfilled the entirety of a work
+                  session.
+            */
+            scope.isWorkCompleted = function() {
+                return workCompleted;
+            }
+
         }
+
 
         return {
             restrict: 'E',

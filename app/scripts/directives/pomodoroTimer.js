@@ -10,7 +10,7 @@
 */
 
 (function() {
-    function pomodoroTimer($interval, INTERVAL_WORK, INTERVAL_BREAK) {
+    function pomodoroTimer($interval, INTERVAL_WORK, INTERVAL_BREAK, INTERVAL_LONG_BREAK) {
         function timer(scope, element, attrs) {
 
             /*
@@ -31,9 +31,17 @@
 
             /*
                 workCompleted (Boolean)
-                  → a flag indicating if user has completed a work session
+                  → a flag indicating if user has most recently completed a work
+                  session
             */
             var workCompleted = false;
+
+            /*
+                completedWorkSessions (Number)
+                  → a counter of completed work sessions (after 4, a longer
+                  break is permitted)
+            */
+            var completedWorkSessions = 0;
 
             /*
                 beginTimer()
@@ -47,6 +55,7 @@
                     if (!scope.timerCount) {
                         $interval.cancel(timer);
                         workCompleted = !workCompleted;
+                        if (workCompleted) { completedWorkSessions++; }
                         resetTimer();
                     }
                 }, delay)
@@ -61,7 +70,18 @@
             function resetTimer() {
                 $interval.cancel(timer);
                 timerState = 'idle';
-                scope.timerCount = workCompleted ? INTERVAL_BREAK : INTERVAL_WORK;
+                var workTime = INTERVAL_WORK;
+                var breakTime = isLongBreak() ? INTERVAL_LONG_BREAK : INTERVAL_BREAK;
+                scope.timerCount = workCompleted ? breakTime : workTime;
+            }
+
+            /*
+                isLongBreak()
+                  => Returns true if a work session has been completed and it is
+                  the fourth consecutive without a long break.
+            */
+            function isLongBreak() {
+                return workCompleted && completedWorkSessions && !(completedWorkSessions % 4);
             }
 
             /*
@@ -122,5 +142,6 @@
 
     angular
         .module('pomodoro')
-        .directive('pomodoroTimer', ['$interval', 'INTERVAL_WORK', 'INTERVAL_BREAK', pomodoroTimer]);
+        .directive('pomodoroTimer', ['$interval', 'INTERVAL_WORK', 'INTERVAL_BREAK',
+          'INTERVAL_LONG_BREAK', pomodoroTimer]);
 })();

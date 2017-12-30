@@ -36,4 +36,5 @@
     */
     app.constant('INTERVAL_WORK', 1500);
     app.constant('INTERVAL_BREAK', 300);
+    app.constant('INTERVAL_LONG_BREAK', 1800);
 })();

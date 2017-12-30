@@ -44,6 +44,16 @@
             var completedWorkSessions = 0;
 
             /*
+                audioChime (Object)
+                  → an audio file for the chime sound effect played when the
+                  timer reaches 0
+            */
+            var audioChime = new buzz.sound('/assets/audio/chime.mp3', {
+                preload: true,
+                volume: 100
+            });
+
+            /*
                 beginTimer()
                   => Begins an interval function that decrements the timer.
             */
@@ -52,11 +62,13 @@
                 var delay = 1000; // every 1s
                 timer = $interval(function() {
                     scope.timerCount--;
+                    // on timer end
                     if (!scope.timerCount) {
                         $interval.cancel(timer);
                         workCompleted = !workCompleted;
                         if (workCompleted) { completedWorkSessions++; }
                         resetTimer();
+                        audioChime.play();
                     }
                 }, delay)
                 timerState = workCompleted ? 'break' : 'working';

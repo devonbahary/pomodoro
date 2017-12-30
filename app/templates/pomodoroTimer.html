@@ -8,7 +8,7 @@
 <section id="pomodoro-timer">
     <div id="timer-container" class="bga-dark centered">
         <div id="time-box">
-            <span id="timer" class="centered txt-heading">{{ timerCount }}</span>
+            <span id="timer" class="centered txt-heading">{{ timerCount | secondsToDateTime | date:'mm:ss' }}</span>
         </div>
         <div id="btn-timer" class="bg-dark btn"
           ng-click="onBtnTimer()" ng-show="isIdle()">

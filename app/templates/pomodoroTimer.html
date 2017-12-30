@@ -1,0 +1,24 @@
+<!--
+  ■ pomodoro
+      app
+          templates
+              * pomodoroTimer.html
+-->
+
+<section id="pomodoro-timer">
+    <div id="timer-container" class="bga-dark centered">
+        <div id="time-box">
+            <span id="timer" class="centered txt-heading">{{ timerCount }}</span>
+        </div>
+        <div id="btn-timer" class="bg-dark btn"
+          ng-click="onBtnTimer()" ng-show="isIdle()">
+            <span class="ion-clock btn-icon"></span>
+        </div>
+        <div id="btn-timer" class="bg-darker btn"
+          ng-click="onBtnTimer()" ng-show="isEngaged()">
+            <span class="ion-android-refresh btn-icon"></span>
+        </div>
+    </div>
+
+
+</section>

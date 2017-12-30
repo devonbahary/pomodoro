@@ -1,0 +1,68 @@
+/*
+  ■ pomodoro
+      styles
+          * pomodoro.css
+   +---------------------------------------------------------------------------
+    * pomodoro.css
+      => Styles for the 'pomodoro' state view.
+   ---------------------------------------------------------------------------+
+*/
+
+#view-pomodoro {
+    display: grid;
+    grid-template-rows: 20% 80%;
+}
+
+#pomodoro-timer {
+    position: relative;
+    border: 1px dashed rgb(255, 136, 77);
+}
+
+#pomodoro-timer #timer-container {
+    position: absolute;
+    display: grid;
+    grid-template-columns: 80% 20%;
+    width: 80%;
+    height: 80%;
+    border: 1px dashed rgb(65,132,225);
+    border-radius: 4px;
+}
+
+#pomodoro-timer #time-box {
+    position: relative;
+}
+
+#pomodoro-timer #timer {
+    font-size: 3rem;
+}
+
+#pomodoro-timer #btn-timer {
+    font-size: 1.4rem;
+    border-left: 1px solid gray;
+}
+
+/* media queries
+  -------------------------------------------------------------------------- */
+
+
+/*
+    screen width > 768px (tablet, laptop, etc.)
+*/
+@media only screen and (min-width: 768px) {
+    #view-pomodoro {
+        grid-template-rows: 1fr;
+    }
+
+    #pomodoro-timer #timer-container {
+        width: 40%;
+        height: 25%;
+    }
+
+    #pomodoro-timer #timer {
+        font-size: 4.5rem;
+    }
+
+    #pomodoro-timer #btn-timer {
+        font-size: 2rem;
+    }
+}

@@ -7,17 +7,26 @@
 
 <section id="pomodoro-timer">
     <div id="timer-container" class="bga-dark centered">
+        <!-- Timer -->
         <div id="time-box" class="timer-container-item" ng-class="{'active': isEngaged()}">
             <span id="timer" class="centered txt-heading">{{ timerCount | secondsToDateTime | date:'mm:ss' }}</span>
         </div>
+        <!-- Btn: Begin Timer -->
         <div id="btn-timer" class="timer-container-item btn" ng-click="isIdle() && onBtnTimer()"
           ng-class="{'bg-gray': isIdle(), 'active bg-darker': isEngaged(), 'working': !isWorkCompleted(),
           'break': isWorkCompleted(), 'long-break': isLongBreak()}">
             <span class="btn-icon" ng-class="{'ion-android-stopwatch': !isWorkCompleted(),
               'ion-android-walk': isWorkCompleted(), 'txt-gray': isEngaged()}"></span>
         </div>
-        <div id="btn-pause" class="btn bg-gray" ng-click="onBtnPause()" ng-class="{'active': isEngaged()}">
+        <!-- Btn: Pause Work Session -->
+        <div class="btn-engaged btn bg-gray" ng-show="!isWorkCompleted()" ng-click="onBtnPause()"
+          ng-class="{'active': isEngaged()}">
             <span class="btn-icon" ng-class="{'ion-pause': !isPaused(), 'ion-play': isPaused()}"></span>
+        </div>
+        <!-- Btn: Skip Break Session -->
+        <div class="btn-engaged btn bg-gray" ng-show="isWorkCompleted()" ng-click="onBtnSkipBreak()"
+          ng-class="{'active': isEngaged()}">
+            <span class="ion-android-stopwatch btn-icon"></span>
         </div>
     </div>
 </section>

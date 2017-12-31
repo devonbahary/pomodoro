@@ -16,8 +16,6 @@
 
 #pomodoro-timer #timer-container {
     position: absolute;
-    /* display: grid;
-    grid-template-columns: 80% 20%; */
     width: 80%;
     height: 80%;
     border: 1px solid rgb(25, 25, 25);
@@ -60,6 +58,10 @@
     border-left: 1px solid dimgray;
 }
 
+#pomodoro-timer #btn-timer.long-break {
+    border-left: 1px solid rgb(255, 213, 0);
+}
+
 #pomodoro-timer #btn-timer.active {
     left: 0;
     border-left: none;
@@ -78,7 +80,7 @@
     border-right: 1px solid rgb(255, 213, 0);
 }
 
-#pomodoro-timer #btn-pause {
+#pomodoro-timer .btn-engaged {
     visibility: hidden;
     opacity: 0;
     position: absolute;
@@ -89,7 +91,7 @@
     transition: opacity 1s;
 }
 
-#pomodoro-timer #btn-pause.active {
+#pomodoro-timer .btn-engaged.active {
     visibility: visible;
     opacity: 0.8;
 }

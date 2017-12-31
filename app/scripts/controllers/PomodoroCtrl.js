@@ -17,7 +17,6 @@
         */
         this.tasks = Tasks.all;
 
-
         /*
             this.submit(String)
                 => Takes a task 'name' String and adds a new tasks database
@@ -27,7 +26,6 @@
             Tasks.addTask(name);
             document.getElementById('form-add-task').reset();
         }
-
 
         /*
             this.complete(Object)

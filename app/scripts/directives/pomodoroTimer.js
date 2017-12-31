@@ -121,7 +121,16 @@
                         beginTimer();
                     }
                 }
+            }
 
+            /*
+                scope.onBtnSkipBreak()
+                    => Available during break sessions only, skips break and
+                      resets timer.
+            */
+            scope.onBtnSkipBreak = function() {
+                workCompleted = !workCompleted;
+                resetTimer();
             }
 
             /*

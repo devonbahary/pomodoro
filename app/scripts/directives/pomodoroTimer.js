@@ -53,6 +53,13 @@
                 volume: 100
             });
 
+
+            /*
+                (Boolean)
+                    → a flag for the pause state
+            */
+            var pauseState = false;
+
             /*
                 beginTimer()
                     => Begins an interval function that decrements the timer.
@@ -61,15 +68,15 @@
                 scope.timerCount--;
                 var delay = 1000; // every 1s
                 timer = $interval(function() {
-                    scope.timerCount--;
-                    // on timer end
                     if (!scope.timerCount) {
-                        $interval.cancel(timer);
-                        workCompleted = !workCompleted;
-                        if (workCompleted) { completedWorkSessions++; }
-                        resetTimer();
-                        audioChime.play();
+                      $interval.cancel(timer);
+                      workCompleted = !workCompleted;
+                      if (workCompleted) { completedWorkSessions++; }
+                      resetTimer();
+                      audioChime.play();
+                      return;
                     }
+                    scope.timerCount--;
                 }, delay)
                 timerState = workCompleted ? 'break' : 'working';
             }
@@ -103,9 +110,17 @@
 
             /*
                 scope.onBtnPause()
-                    => Pauses/resumes timer.
+                    => Pauses/resumes timer (when timer > 0).
             */
             scope.onBtnPause = function() {
+                if (scope.timerCount) {
+                    pauseState = !pauseState;
+                    if (pauseState) {
+                        $interval.cancel(timer);
+                    } else {
+                        beginTimer();
+                    }
+                }
 
             }
 
@@ -118,11 +133,11 @@
             }
 
             /*
-                scope.isTicking()
+                scope.isEngaged()
                     => Returns true if timer is in 'working' or 'break' state.
             */
-            scope.isTicking = function() {
-                return timerState === 'working' || timerState === 'break';
+            scope.isEngaged = function() {
+                return timerState !== 'idle';
             }
 
             /*
@@ -141,6 +156,14 @@
             */
             scope.isLongBreak = function() {
                 return workCompleted && completedWorkSessions && !(completedWorkSessions % 4);
+            }
+
+            /*
+                scope.isPaused()
+                    => Returns true if session is paused.
+            */
+            scope.isPaused = function() {
+                return pauseState;
             }
 
         }

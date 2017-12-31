@@ -7,14 +7,17 @@
 
 <section id="pomodoro-timer">
     <div id="timer-container" class="bga-dark centered">
-        <div id="time-box" class="timer-container-item" ng-class="{'active': isTicking()}">
+        <div id="time-box" class="timer-container-item" ng-class="{'active': isEngaged()}">
             <span id="timer" class="centered txt-heading">{{ timerCount | secondsToDateTime | date:'mm:ss' }}</span>
         </div>
         <div id="btn-timer" class="timer-container-item btn" ng-click="isIdle() && onBtnTimer()"
-          ng-class="{'bg-gray': isIdle(), 'active bg-darker': isTicking(), 'working': !isWorkCompleted(),
+          ng-class="{'bg-gray': isIdle(), 'active bg-darker': isEngaged(), 'working': !isWorkCompleted(),
           'break': isWorkCompleted(), 'long-break': isLongBreak()}">
             <span class="btn-icon" ng-class="{'ion-android-stopwatch': !isWorkCompleted(),
-              'ion-android-walk': isWorkCompleted(), 'txt-gray': isTicking()}"></span>
+              'ion-android-walk': isWorkCompleted(), 'txt-gray': isEngaged()}"></span>
+        </div>
+        <div id="btn-pause" class="btn bg-gray" ng-click="onBtnPause()" ng-class="{'active': isEngaged()}">
+            <span class="btn-icon" ng-class="{'ion-pause': !isPaused(), 'ion-play': isPaused()}"></span>
         </div>
     </div>
 </section>

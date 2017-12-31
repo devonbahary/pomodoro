@@ -14,7 +14,7 @@
 }
 
 #view-pomodoro #tasks {
-    border: 1px dashed rgb(216,0,0);
+
 }
 
 #tasks #tasks-header {
@@ -24,6 +24,14 @@
     font-size: 1.4rem;
 }
 
+#tasks #task-list {
+    position: relative;
+    left: 5%;
+    width: 95%;
+    height: calc(100% - 2.7rem - 4.2rem);
+    overflow-y: scroll;
+}
+
 #tasks .task-container {
     display: grid;
     min-height: 4.2rem;
@@ -31,7 +39,10 @@
 }
 
 #tasks #add-task-item {
+    position: relative;
     grid-template-columns: 80% 20%;
+    box-shadow: 0 1px 10px 5px rgb(25, 25, 25);
+    z-index: 1;
 }
 
 #tasks .task-item {
@@ -98,11 +109,15 @@
         position: absolute;
         width: 40%;
         height: 100%;
-        background: rgba(25, 25, 25, 0.4);
     }
 
     #tasks #add-task-item {
         grid-template-columns: 85% 15%;
+    }
+
+    #tasks #task-list {
+        left: 10%;
+        width: 90%;
     }
 
     #tasks .task-item {

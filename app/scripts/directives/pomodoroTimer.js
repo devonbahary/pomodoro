@@ -83,17 +83,8 @@
                 $interval.cancel(timer);
                 timerState = 'idle';
                 var workTime = INTERVAL_WORK;
-                var breakTime = isLongBreak() ? INTERVAL_LONG_BREAK : INTERVAL_BREAK;
+                var breakTime = scope.isLongBreak() ? INTERVAL_LONG_BREAK : INTERVAL_BREAK;
                 scope.timerCount = workCompleted ? breakTime : workTime;
-            }
-
-            /*
-                isLongBreak()
-                    => Returns true if a work session has been completed and it
-                      is the fourth consecutive without a long break.
-            */
-            function isLongBreak() {
-                return workCompleted && completedWorkSessions && !(completedWorkSessions % 4);
             }
 
             /*
@@ -107,13 +98,15 @@
                     => Starts or resets the timer according to 'timerState'.
             */
             scope.onBtnTimer = function() {
-                switch(timerState) {
-                    case 'idle':
-                        beginTimer();
-                        break;
-                    default:
-                        resetTimer();
-                }
+                scope.isIdle() ? beginTimer() : resetTimer();
+            }
+
+            /*
+                scope.onBtnPause()
+                    => Pauses/resumes timer.
+            */
+            scope.onBtnPause = function() {
+
             }
 
             /*
@@ -139,6 +132,15 @@
             */
             scope.isWorkCompleted = function() {
                 return workCompleted;
+            }
+
+            /*
+                scope.isLongBreak()
+                    => Returns true if a work session has been completed and it
+                      is the fourth consecutive without a long break.
+            */
+            scope.isLongBreak = function() {
+                return workCompleted && completedWorkSessions && !(completedWorkSessions % 4);
             }
 
         }

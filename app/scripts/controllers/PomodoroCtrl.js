@@ -20,12 +20,22 @@
 
         /*
             this.submit(String)
-                => Takes a task 'item' String and adds a new tasks database
+                => Takes a task 'name' String and adds a new tasks database
                   entry via the 'Tasks' service.
         */
-        this.submit = function(item) {
-            Tasks.addTask(item);
+        this.submit = function(name) {
+            Tasks.addTask(name);
             document.getElementById('form-add-task').reset();
+        }
+
+
+        /*
+            this.complete(Object)
+                => Takes a task 'item' Object and removes it from the database
+                  via the 'Tasks' service.
+        */
+        this.complete = function(item) {
+            Tasks.removeTask(item);
         }
     }
 

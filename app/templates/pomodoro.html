@@ -16,16 +16,18 @@
         </header>
         <form id="form-add-task" name="newTask" ng-submit="pomodoro.submit(task)">
             <div id="add-task-item" class="task-container">
-                <input type="text" ng-model="task" rows="2" minlength="1" maxlength="93" placeholder="add task" required>
+                <input type="text" ng-model="task" minlength="1" maxlength="93" placeholder="add task" required>
                 <label class="task-btn btn bg-gray">
-                <input type="submit">
-                <span class="ion-plus btn-icon txt-gray"></span>
+                    <input type="submit">
+                    <span class="ion-plus btn-icon txt-gray"></span>
                 </label>
             </div>
         </form>
         <div id="task-list">
-            <div class="task-container task-item" ng-repeat="task in pomodoro.tasks | orderBy: task.timestamp : true" ng-class="{'bga-gray': $even, 'bga-dark': $odd}">
-                <div class="task-btn btn" ng-class="{'bg-gray': $even, 'bg-dark': $odd}">
+            <div class="task-container task-item" ng-class="{'bga-gray': $even, 'bga-dark': $odd}"
+              ng-repeat="task in pomodoro.tasks | orderBy: task.timestamp : true">
+                <div class="task-btn btn" ng-class="{'bg-gray': $even, 'bg-dark': $odd}"
+                  ng-click="pomodoro.complete(task)">
                     <span class="ion-android-checkbox-outline btn-icon"></span>
                 </div>
                 <div class="task-text-box">

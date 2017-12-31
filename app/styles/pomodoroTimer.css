@@ -16,8 +16,8 @@
 
 #pomodoro-timer #timer-container {
     position: absolute;
-    display: grid;
-    grid-template-columns: 80% 20%;
+    /* display: grid;
+    grid-template-columns: 80% 20%; */
     width: 80%;
     height: 80%;
     border: 1px solid rgb(25, 25, 25);
@@ -25,18 +25,58 @@
     box-shadow: 0 0 10px 1px rgb(25, 25, 25);
 }
 
+#pomodoro-timer .timer-container-item {
+    -webkit-transition: left 1s;
+    transition: left 1s;
+}
+
 #pomodoro-timer #time-box {
-    position: relative;
+    position: absolute;
+    left: 0;
+    width: 80%;
+    height: 100%;
+    -webkit-transition: width 1s;
+    transition: width 1s;
+}
+
+#pomodoro-timer #time-box.active {
+    left: 20%;
 }
 
 #pomodoro-timer #timer {
     font-size: 3rem;
 }
 
-#pomodoro-timer #btn-timer {
+#pomodoro-timer .btn {
     font-size: 1.4rem;
+}
+
+#pomodoro-timer #btn-timer {
+    position: absolute;
+    left: 80%;
+    width: 20%;
+    height: 100%;
     border-left: 1px solid dimgray;
 }
+
+#pomodoro-timer #btn-timer.active {
+    left: 0;
+    border-left: none;
+    cursor: default;
+}
+
+#pomodoro-timer #btn-timer.active.working {
+    border-right: 1px solid rgb(216, 0, 0);
+}
+
+#pomodoro-timer #btn-timer.active.break {
+    border-right: 1px solid rgb(46, 139, 87);
+}
+
+#pomodoro-timer #btn-timer.active.long-break {
+    border-right: 1px solid rgb(255, 213, 0);
+}
+
 
 
 /* media queries

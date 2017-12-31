@@ -53,7 +53,6 @@
     background: rgb(37, 37, 37);
     border: none;
     width: 100%;
-    resize: none;
     font-size: 1.4rem;
     padding: 0 6px;
     opacity: 0.8;
@@ -69,11 +68,13 @@
     min-height: 4.2rem;
     font-size: 1.4rem;
     border-right: 1px solid dimgray;
+    border-bottom: 1px solid rgb(25, 25, 25);
 }
 
 #tasks #add-task-item .task-btn {
     border-right: none;
     border-left: 1px solid dimgray;
+    border-bottom: none;
 }
 
 #tasks .task-text-box {

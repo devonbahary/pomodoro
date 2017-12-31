@@ -41,6 +41,14 @@
             });
         }
 
+        /*
+            Tasks.removeTask(Object)
+                => Takes a task 'item' Object and removes it from the database.
+        */
+        Tasks.removeTask = function(item) {
+            Tasks.all.$remove(item);
+        }
+
         return Tasks;
     }
 

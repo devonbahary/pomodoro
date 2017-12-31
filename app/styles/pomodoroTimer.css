@@ -58,10 +58,6 @@
     border-left: 1px solid dimgray;
 }
 
-#pomodoro-timer #btn-timer.long-break {
-    border-left: 1px solid rgb(255, 213, 0);
-}
-
 #pomodoro-timer #btn-timer.active {
     left: 0;
     border-left: none;
@@ -78,6 +74,22 @@
 
 #pomodoro-timer #btn-timer.active.long-break {
     border-right: 1px solid rgb(255, 213, 0);
+}
+
+#pomodoro-timer #btn-timer.working .btn-icon {
+    text-shadow: 5px 0 rgb(216, 0, 0);
+}
+
+#pomodoro-timer #btn-timer.break .btn-icon {
+    text-shadow: 5px 0 rgb(46, 139, 87);
+}
+
+#pomodoro-timer #btn-timer.long-break .btn-icon {
+    text-shadow: 5px 0 rgb(255, 213, 0);
+}
+
+#pomodoro-timer #btn-timer.active .btn-icon {
+    text-shadow: 2px 1px black;
 }
 
 #pomodoro-timer .btn-engaged {

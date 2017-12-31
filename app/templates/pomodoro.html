@@ -10,10 +10,13 @@
     <section id="pomodoro-directive">
         <pomodoro-timer></pomodoro-timer>
     </section>
+    <!-- Task List -->
     <section id="tasks" class="txt-body">
+        <!-- Header -->
         <header id="tasks-header" class="bg-darker">
             <span class="ion-android-menu txt-gray"></span>
         </header>
+        <!-- Form: Add Task -->
         <form id="form-add-task" name="newTask" ng-submit="pomodoro.submit(task)">
             <div id="add-task-item" class="task-container">
                 <input type="text" ng-model="task" minlength="1" maxlength="93" placeholder="add task" required>
@@ -23,6 +26,7 @@
                 </label>
             </div>
         </form>
+        <!-- Task List Items -->
         <div id="task-list">
             <div class="task-container task-item" ng-class="{'bga-gray': $even, 'bga-dark': $odd}"
               ng-repeat="task in pomodoro.tasks | orderBy: task.timestamp : true">
@@ -34,7 +38,8 @@
                     <span class="task-text">{{ task.name }}</span>
                 </div>
             </div>
-
         </div>
     </section>
+    <!-- Modal: Pomodoro Info -->
+    <pomodoro-info></pomodoro-info>
 </main>

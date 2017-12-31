@@ -13,10 +13,6 @@
     grid-template-rows: 20% 80%;
 }
 
-#view-pomodoro #tasks {
-
-}
-
 #tasks #tasks-header {
     height: 2.5rem;
     line-height: 2.5rem;

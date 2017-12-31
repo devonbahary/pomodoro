@@ -1,0 +1,102 @@
+/*
+  ■ pomodoro
+      styles
+          * pomodoroInfo.css
+   +---------------------------------------------------------------------------
+    * pomodoroInfo.css
+      => Styles unique to 'pomodoroInfo.html'.
+   ---------------------------------------------------------------------------+
+*/
+
+#pomodoro-info {
+}
+
+#pomodoro-info #pomodoro-info-modal {
+    position: fixed;
+    top: 0; right: 0; bottom: 0; left: 0;
+    z-index: 1;
+}
+
+#pomodoro-info #info-items {
+    display: grid;
+    width: 80%;
+    height: 40%;
+}
+
+#pomodoro-info .info-item {
+    display: grid;
+    grid-template-columns: 25% 75%;
+    position: relative;
+    width: 100%;
+    height: 4rem;
+    margin-bottom: 12px;
+    border: 1px solid rgb(25, 25, 25);
+    box-shadow: 0 0 10px 1px black;
+}
+
+#pomodoro-info .info-image {
+    position: relative;
+    border-right: 1px solid rgb(50, 50, 50);
+}
+
+#pomodoro-info .info-image .work {
+    text-shadow: 5px 0 rgb(216, 0, 0);
+}
+
+#pomodoro-info .info-image .break {
+    text-shadow: 5px 0 rgb(46, 139, 87);
+}
+
+#pomodoro-info .info-image .long-break {
+    text-shadow: 5px 0 rgb(255, 213, 0);
+}
+
+#pomodoro-info .info-image-text {
+    position: absolute;
+    font-size: 0.8rem;
+    right: 4px; bottom: 0;
+}
+
+#pomodoro-info .btn-icon {
+    font-size: 1.4rem;
+}
+
+#pomodoro-info .info-text {
+    position: relative;
+    font-size: 0.8rem;
+}
+
+#pomodoro-info .info-text .centered {
+    width: 100%;
+    text-align: center;
+}
+
+#pomodoro-info #btn-info {
+    position: fixed;
+    right: 0; bottom: 0;
+    width: 44px; height: 44px;
+    text-align: center;
+    line-height: 44px;
+    font-size: 1.4rem;
+    border-top-left-radius: 4px;
+    z-index: 2;
+}
+
+
+/* media queries
+  -------------------------------------------------------------------------- */
+
+/*
+    screen width > 768px (tablet, laptop, etc.)
+*/
+@media only screen and (min-width: 768px) {
+    #pomodoro-info #info-items {
+        display: grid;
+        width: 60%;
+        height: 40%;
+    }
+
+    #pomodoro-info .info-item {
+        grid-template-columns: 20% 80%;
+    }
+}

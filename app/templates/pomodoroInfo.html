@@ -1,0 +1,46 @@
+<!--
+  ■ pomodoro
+      app
+          templates
+              * pomodoroInfo.html
+-->
+
+<section id="pomodoro-info">
+    <!-- Info Modal -->
+    <section id="pomodoro-info-modal" class="bga-dark" ng-show="isModalOpen()" ng-click="onBtnModal()">
+        <div id="info-items" class="centered" ng-click="$event.stopPropagation()">
+            <div class="info-item bg-dark">
+                <div class="info-image">
+                    <span class="ion-android-stopwatch work btn-icon"></span>
+                    <span class="info-image-text txt-body">25min</span>
+                </div>
+                <div class="info-text txt-body">
+                    <span class="centered">You're in a <strong>work</strong> session.</span>
+                </div>
+            </div>
+            <div class="info-item bg-dark">
+                <div class="info-image">
+                    <span class="ion-android-walk break btn-icon"></span>
+                    <span class="info-image-text txt-body">5min</span>
+                </div>
+                <div class="info-text txt-body">
+                    <span class="centered">Time to take a <strong>break</strong>.</span>
+                </div>
+            </div>
+            <div class="info-item bg-dark">
+                <div class="info-image">
+                    <span class="ion-android-walk long-break btn-icon"></span>
+                    <span class="info-image-text txt-body">30min</span>
+                </div>
+                <div class="info-text txt-body">
+                    <span class="centered">You've completed 4 work sessions! Take a <strong>long break</strong>.</span>
+                </div>
+            </div>
+        </div>
+
+    </section>
+    <!-- Btn: Info Modal -->
+    <footer id="btn-info" class="bg-gray btn" ng-click="onBtnModal()">
+        <span class="ion-help txt-gray"></span>
+    </footer>
+</section>

@@ -13,14 +13,22 @@
     function PomodoroCtrl(Tasks) {
         /*
             ($firebaseArray)
-                → a $firebaseArray of task objects from the 'Tasks' service
+                → a $firebaseArray of active task objects from the 'Tasks'
+                  service
         */
-        this.tasks = Tasks.all;
+        this.activeTasks = Tasks.active;
+
+        /*
+            ($firebaseArray)
+                → a $firebaseArray of completed task objects from the 'Tasks'
+                  service
+        */
+        this.completedTasks = Tasks.completed;
 
         /*
             this.submit(String)
-                => Takes a task 'name' String and adds a new tasks database
-                  entry via the 'Tasks' service.
+                => Takes a task 'name' String and adds a new active tasks
+                  database entry via the 'Tasks' service.
         */
         this.submit = function(name) {
             Tasks.addTask(name);
@@ -28,12 +36,22 @@
         }
 
         /*
-            this.complete(Object)
-                => Takes a task 'item' Object and removes it from the database
+            this.onBtnComplete(Object)
+                => Takes a task 'item' Object,  removes it from the active
+                  tasks database and adds it to the completed tasks database
                   via the 'Tasks' service.
         */
-        this.complete = function(item) {
-            Tasks.removeTask(item);
+        this.onBtnComplete = function(item) {
+            Tasks.completeTask(item);
+        }
+
+        /*
+            this.onBtnDestroy(Object)
+                => Takes a task 'item' Object and removes it from the completed
+                  tasks database via the 'Tasks' service.
+        */
+        this.onBtnDestroy = function(item) {
+            Tasks.destroyTask(item);
         }
     }
 

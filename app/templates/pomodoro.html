@@ -27,15 +27,30 @@
             </div>
         </form>
         <!-- Task List Items -->
-        <div id="task-list">
+        <div id="tasks-list">
+            <!-- Tasks: Active -->
             <div class="task-container task-item" ng-class="{'bga-gray': $even, 'bga-dark': $odd}"
-              ng-repeat="task in pomodoro.tasks | orderBy: task.timestamp : true">
+              ng-repeat="activeTask in pomodoro.activeTasks | orderBy: activeTask.timestamp : true">
                 <div class="task-btn btn" ng-class="{'bg-gray': $even, 'bg-dark': $odd}"
-                  ng-click="pomodoro.complete(task)">
+                  ng-click="pomodoro.onBtnComplete(activeTask)">
                     <span class="ion-android-checkbox-outline btn-icon"></span>
                 </div>
                 <div class="task-text-box">
-                    <span class="task-text">{{ task.name }}</span>
+                    <span class="task-text">{{ activeTask.name }}</span>
+                </div>
+            </div>
+            <!-- Tasks: Completed -->
+            <div class="task-container task-item completed"
+              ng-class="{'bga-gray': pomodoro.activeTasks.length % 2 ? $odd : $even,
+                'bga-dark': pomodoro.activeTasks.length % 2 ? $even : $odd}"
+              ng-repeat="completedTask in pomodoro.completedTasks | orderBy: completedTask.timestamp : true">
+                <div class="task-btn btn" ng-click="pomodoro.onBtnDestroy(completedTask)"
+                  ng-class="{'bg-gray': pomodoro.activeTasks.length % 2 ? $odd : $even,
+                    'bg-dark': pomodoro.activeTasks.length % 2 ? $even : $odd}">
+                    <span class="ion-trash-b btn-icon"></span>
+                </div>
+                <div class="task-text-box">
+                    <span class="task-text txt-gray">{{ completedTask.name }}</span>
                 </div>
             </div>
         </div>

@@ -84,6 +84,7 @@ body {
     background-position: 70% 0;
     width: 100vw;
     height: 100vh;
+    min-height: 600px;
 }
 
 main.view {

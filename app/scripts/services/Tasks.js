@@ -19,15 +19,26 @@
         var Tasks = {};
 
         /*
-                → the Firebase database reference to 'tasks' data
+                → the Firebase database reference to 'tasksActive' data
         */
-        var ref = firebase.database().ref('/tasks');
+        var refTasksActive = firebase.database().ref('/tasksActive');
+
+        /*
+                → the Firebase database reference to 'tasksCompleted' data
+        */
+        var refTasksCompleted = firebase.database().ref('/tasksCompleted');
 
         /*
             ($firebaseArray)
-                → a $firebaseArray of task objects
+                → a $firebaseArray of active task objects
         */
-        Tasks.all = $firebaseArray(ref);
+        Tasks.active = $firebaseArray(refTasksActive);
+
+        /*
+            ($firebaseArray)
+                → a $firebaseArray of completed task objects
+        */
+        Tasks.completed = $firebaseArray(refTasksCompleted);
 
         /*
             Tasks.addTask(String)
@@ -35,18 +46,33 @@
                   database, including a timestamp for ordering.
         */
         Tasks.addTask = function(name) {
-            Tasks.all.$add({
+            Tasks.active.$add({
                 name: name,
                 timestamp: firebase.database.ServerValue.TIMESTAMP
             });
         }
 
         /*
-            Tasks.removeTask(Object)
-                => Takes a task 'item' Object and removes it from the database.
+            Tasks.completeTask(Object)
+                => Takes an active task 'item' Object, removes it from the
+                  active tasks, and adds it to the complete tasks with a
+                  new timestamp.
         */
-        Tasks.removeTask = function(item) {
-            Tasks.all.$remove(item);
+        Tasks.completeTask = function(item) {
+            Tasks.active.$remove(item);
+            Tasks.completed.$add({
+                name: item.name,
+                timestamp: firebase.database.ServerValue.TIMESTAMP
+            });
+        }
+
+        /*
+            Tasks.destroyTask(Object)
+                => Takes a completed task 'item' Object and removes it from
+                  the completed tasks database.
+        */
+        Tasks.destroyTask = function(item) {
+            Tasks.completed.$remove(item);
         }
 
         return Tasks;

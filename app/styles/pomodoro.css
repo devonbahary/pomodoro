@@ -20,7 +20,7 @@
     font-size: 1.4rem;
 }
 
-#tasks #task-list {
+#tasks #tasks-list {
     position: relative;
     left: 5%;
     width: 95%;
@@ -43,6 +43,10 @@
 
 #tasks .task-item {
     grid-template-columns: 20% 80%;
+}
+
+#tasks .task-item.completed {
+    opacity: 0.6;
 }
 
 #tasks input[type='text'] {
@@ -75,7 +79,7 @@
 
 #tasks .task-text-box {
     position: relative;
-    padding: 0 6px;
+    padding: 0 12px;
 }
 
 #tasks .task-text {
@@ -112,7 +116,7 @@
         grid-template-columns: 85% 15%;
     }
 
-    #tasks #task-list {
+    #tasks #tasks-list {
         left: 10%;
         width: 90%;
     }

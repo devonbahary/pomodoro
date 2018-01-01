@@ -12,15 +12,15 @@
 }
 
 #pomodoro-info #pomodoro-info-modal {
-    position: fixed;
+    position: absolute;
     top: 0; right: 0; bottom: 0; left: 0;
     z-index: 1;
+    overflow-y: scroll;
 }
 
 #pomodoro-info #info-items {
     display: grid;
     width: 80%;
-    height: 40%;
 }
 
 #pomodoro-info .info-item {
@@ -32,6 +32,18 @@
     margin-bottom: 12px;
     border: 1px solid rgb(25, 25, 25);
     box-shadow: 0 0 10px 1px black;
+}
+
+#pomodoro-info .info-item.help {
+    grid-template-columns: auto;
+    height: 2rem;
+    left: 10%;
+    width: 80%;
+}
+
+#pomodoro-info .info-item.task {
+    left: 5%;
+    width: 90%;
 }
 
 #pomodoro-info .info-image {
@@ -71,6 +83,13 @@
     text-align: center;
 }
 
+#pomodoro-info .info-item.help .info-text {
+    font-size: 1.4rem;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    text-shadow: 2px 0 black;
+}
+
 #pomodoro-info #btn-info {
     position: fixed;
     right: 0; bottom: 0;
@@ -93,7 +112,6 @@
     #pomodoro-info #info-items {
         display: grid;
         width: 60%;
-        height: 40%;
     }
 
     #pomodoro-info .info-item {

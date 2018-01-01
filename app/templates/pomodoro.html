@@ -19,7 +19,9 @@
         <!-- Form: Add Task -->
         <form id="form-add-task" name="newTask" ng-submit="pomodoro.submit(task)">
             <div id="add-task-item" class="task-container">
-                <input type="text" ng-model="task" minlength="1" maxlength="93" placeholder="add task" required>
+                <div>
+                    <input type="text" ng-model="task" minlength="1" maxlength="93" placeholder="add task" required>
+                </div>
                 <label class="task-btn btn bg-gray">
                     <input type="submit">
                     <span class="ion-plus btn-icon txt-gray"></span>

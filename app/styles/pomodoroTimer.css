@@ -77,7 +77,7 @@
 }
 
 #pomodoro-timer #btn-timer.working .btn-icon {
-    text-shadow: 5px 0 rgb(216, 0, 0);
+    text-shadow: 3px 0 rgb(216, 0, 0);
 }
 
 #pomodoro-timer #btn-timer.break .btn-icon {

@@ -41,18 +41,13 @@
     width: 80%;
 }
 
-#pomodoro-info .info-item.task {
-    left: 5%;
-    width: 90%;
-}
-
 #pomodoro-info .info-image {
     position: relative;
     border-right: 1px solid rgb(50, 50, 50);
 }
 
 #pomodoro-info .info-image .work {
-    text-shadow: 5px 0 rgb(216, 0, 0);
+    text-shadow: 3px 0 rgb(216, 0, 0);
 }
 
 #pomodoro-info .info-image .break {
@@ -116,5 +111,13 @@
 
     #pomodoro-info .info-item {
         grid-template-columns: 20% 80%;
+    }
+
+    #pomodoro-info .info-image-text {
+        font-size: 1rem;
+    }
+
+    #pomodoro-info .info-text {
+        font-size: 1rem;
     }
 }

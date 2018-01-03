@@ -14,7 +14,7 @@
         function pomodoroInfoModal(scope, element, attrs) {
             /*
                 (Boolean)
-                    → modal open flag
+                    → info modal open flag
             */
             var modalOpen = false;
 
@@ -28,7 +28,7 @@
 
             /*
                 scope.isModalOpen()
-                    => Returns true with the 'modalOpen' flag.
+                    => Returns current 'modalOpen' state.
             */
             scope.isModalOpen = function() {
                 return modalOpen;
@@ -39,6 +39,7 @@
             restrict: 'E',
             replace: true,
             link: pomodoroInfoModal,
+            scope: {},
             templateUrl: '/templates/pomodoroInfo.html'
         }
     }

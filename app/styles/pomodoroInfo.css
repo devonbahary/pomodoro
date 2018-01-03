@@ -34,11 +34,12 @@
     box-shadow: 0 0 10px 1px black;
 }
 
-#pomodoro-info .info-item.help {
+#pomodoro-info .info-item#title {
     grid-template-columns: auto;
     height: 2rem;
     left: 10%;
     width: 80%;
+    margin-bottom: 24px;
 }
 
 #pomodoro-info .info-image {
@@ -76,13 +77,6 @@
 #pomodoro-info .info-text .centered {
     width: 100%;
     text-align: center;
-}
-
-#pomodoro-info .info-item.help .info-text {
-    font-size: 1.4rem;
-    text-transform: uppercase;
-    letter-spacing: 3px;
-    text-shadow: 2px 0 black;
 }
 
 #pomodoro-info #btn-info {

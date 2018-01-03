@@ -21,6 +21,7 @@
     <link rel="stylesheet" href="/styles/pomodoro.css">
     <link rel="stylesheet" href="/styles/pomodoroTimer.css">
     <link rel="stylesheet" href="/styles/pomodoroInfo.css">
+    <link rel="stylesheet" href="/styles/userAuth.css">
 </head>
 <body>
     <ui-view>
@@ -33,8 +34,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.4.2/angular-ui-router.min.js"></script>
     <!-- Firebase -->
     <script src="https://www.gstatic.com/firebasejs/4.8.1/firebase.js"></script>
-    <!-- AngularFire -->
-    <script src="https://cdn.firebase.com/libs/angularfire/2.3.0/angularfire.min.js"></script>
     <script>
         // Initialize Firebase
         var config = {
@@ -47,12 +46,35 @@
         };
         firebase.initializeApp(config);
     </script>
+    <!-- AngularFire -->
+    <script src="https://cdn.firebase.com/libs/angularfire/2.3.0/angularfire.min.js"></script>
+    <!-- FirebaseUI -->
+    <!-- <script src="https://cdn.firebase.com/libs/firebaseui/2.5.1/firebaseui.js"></script>
+    <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/2.5.1/firebaseui.css" />
+    <script type="text/javascript">
+      // FirebaseUI config.
+      var uiConfig = {
+        signInSuccessUrl: '/',
+        signInOptions: [
+          // Leave the lines as is for the providers you want to offer your users.
+          firebase.auth.EmailAuthProvider.PROVIDER_ID
+        ],
+        // Terms of service url.
+        tosUrl: '/'
+      };
+
+      // Initialize the FirebaseUI Widget using Firebase.
+      var ui = new firebaseui.auth.AuthUI(firebase.auth());
+      // The start method will wait until the DOM is loaded.
+      ui.start('#firebaseui-auth-container', uiConfig);
+    </script> -->
     <!-- Application Scripts -->
     <script src="/scripts/app.js"></script>
     <script src="/scripts/services/Tasks.js"></script>
     <script src="/scripts/controllers/PomodoroCtrl.js"></script>
     <script src="/scripts/directives/pomodoroTimer.js"></script>
     <script src="/scripts/directives/pomodoroInfo.js"></script>
+    <script src="/scripts/directives/userAuth.js"></script>
     <script src="/scripts/filters/secondsToDateTime.js"></script>
 </body>
 </html>

@@ -1,0 +1,313 @@
+/*
+  ■ pomodoro
+      styles
+          * userAuth.css
+   +---------------------------------------------------------------------------
+    * userAuth.css
+      => Styles unique to 'userAuth.html'.
+   ---------------------------------------------------------------------------+
+*/
+
+#user-auth {
+
+}
+
+/*  User Auth Interface
+-------------------------------------------------------------------------- */
+#user-auth .txt-signed-in {
+    color: rgb(255, 136, 77);
+}
+
+#user-auth #btn-user-auth-container {
+    position: fixed;
+    top: 0; right: 0;
+    width: 100%;
+    height: 44px;
+    line-height: 44px;
+    font-size: 1.4rem;
+    border-bottom-left-radius: 4px;
+}
+
+#user-auth .btn-auth {
+    position: absolute;
+    right: 0;
+    width: 44px;
+    height: 100%;
+    border-bottom-left-radius: 4px;
+}
+
+#user-auth #btn-user-auth {
+    border-left: 1px solid dimgray;
+    border-bottom: 1px solid dimgray;
+}
+
+#user-auth #btn-user-auth-container.active #btn-user-auth {
+    border-left: 1px solid rgb(50, 50, 50);
+    border-bottom: 1px solid rgb(50, 50, 50);
+}
+
+#user-auth #user-name {
+    position: absolute;
+    right: -200px;
+    height: 100%;
+    padding: 0 12px;
+    border-bottom-left-radius: 4px;
+    font-size: 1rem;
+    -webkit-transition: right 0.5s;
+    transition: right 0.5s;
+    border-left: 1px solid rgb(25, 25, 25);
+    border-bottom: 1px solid rgb(25, 25, 25);
+}
+
+#user-auth #btn-sign-in-out {
+    z-index: -1;
+    top: 0;
+    -webkit-transition: top 0.5s;
+    transition: top 0.5s;
+    border-left: 1px solid rgb(50, 50, 50);
+    border-bottom: 1px solid rgb(50, 50, 50);
+}
+
+#user-auth #btn-user-auth-container.active #user-name {
+    right: 44px;
+}
+
+#user-auth #btn-user-auth-container.active #btn-sign-in-out {
+    top: 44px;
+}
+
+/*  User Sign-In Modal
+  -------------------------------------------------------------------------- */
+#user-auth #user-auth-modal {
+    position: absolute;
+    top: 0; right: 0; bottom: 0; left: 0;
+    z-index: 2;
+    overflow-y: scroll;
+}
+
+#user-auth .btn-icon {
+    width: 100%;
+    text-align: center;
+}
+
+#user-auth #sign-in-container {
+    display: grid;
+    width: 90%;
+}
+
+#user-auth .sign-in-item {
+    position: relative;
+    display: grid;
+    grid-template-columns: 25% 75%;
+    height: 4rem;
+    width: 100%;
+    margin-bottom: 12px;
+    box-shadow: 0 0 10px 1px black;
+}
+
+#user-auth .sign-in-item#title {
+    left: 10%;
+    width: 80%;
+}
+
+#user-auth .sign-in-item#title {
+    display: block;
+    height: 2.5rem;
+}
+
+#user-auth .sign-in-item#sign-in-sign-up-box {
+    display: grid;
+    grid-template-rows: 2.5rem 1fr;
+    grid-template-columns: auto;
+    grid-gap: 20px;
+    padding: 12px;
+    height: auto;
+}
+
+#user-auth .sign-in-item-image {
+    position: relative;
+    border-right: 1px solid rgb(50, 50, 50);
+}
+
+#user-auth .sign-in-item-image .btn-icon {
+    font-size: 1.4rem;
+}
+
+#user-auth .sign-in-item-text {
+    position: relative;
+    font-size: 0.8rem;
+}
+
+#user-auth .sign-in-item-text .centered {
+    width: 100%;
+    text-align: center;
+}
+
+#user-auth .sign-in-item-text a {
+    color: lightblue;
+    text-decoration: none;
+}
+
+#user-auth #sign-up-sign-in-toggle-container {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 20px;
+    width: 100%;
+}
+
+#user-auth .toggle-item {
+    position: relative;
+    border-radius: 4px;
+    box-shadow: 0 0 1px 1px black;
+}
+
+#user-auth .toggle-item .centered {
+    width: 100%;
+    text-align: center;
+}
+
+#user-auth .toggle-item .txt-body {
+    opacity: 0.5;
+}
+
+#user-auth .toggle-item.active .txt-body {
+    opacity: 1;
+}
+
+#user-auth #account-toggle-cursor {
+    position: absolute;
+    left: 0;
+    width: calc(50% - 10px);
+    height: 100%;
+    border: 1px solid rgb(255, 136, 77);
+    -webkit-transition: left 0.5s;
+    transition: left 0.5s;
+}
+
+#user-auth #account-toggle-cursor.switch {
+    left: calc(50% + 10px);
+}
+
+#user-auth #auth-form-box {
+    border-top: 1px solid black;
+    padding: 12px;
+}
+
+#user-auth .auth-form {
+    display: grid;
+    grid-template-rows: auto;
+    grid-gap: 12px;
+}
+
+#user-auth .auth-form-item {
+    position: relative;
+    display: grid;
+    grid-template-columns: 20% 80%;
+    height: 2rem;
+    box-shadow: 0 0 1px 1px black;
+}
+
+#user-auth .auth-form-item.split {
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 20px;
+    box-shadow: none;
+}
+
+#user-auth .auth-form-item.error {
+    box-shadow: 0 0 10px 1px red;
+}
+
+#user-auth .auth-form-item-image {
+    position: relative;
+    border-right: 1px solid rgb(50, 50, 50);
+}
+
+#user-auth input {
+    background: none;
+    border: none;
+    padding: 0 6px;
+    outline: none;
+    line-height: 2rem;
+    height: 2rem;
+}
+
+#user-auth #icon-hide-password {
+    position: absolute;
+    right: 12px;
+    line-height: 2rem;
+    transition: opacity 0.2s;
+}
+
+#user-auth #icon-hide-password.ion-eye {
+    opacity: 1;
+}
+
+#user-auth #icon-hide-password.ion-eye-disabled {
+    opacity: 0.5;
+}
+
+#user-auth input:focus + #icon-hide-password {
+    opacity: 1;
+}
+
+#user-auth .auth-form-item#btn-forgot-password {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    border-radius: 4px;
+}
+
+#user-auth .auth-form-item.submit {
+    -webkit-transition: background-color 0.5s;
+    transition: background-color 0.5s;
+    border-radius: 4px;
+}
+
+#user-auth .auth-form:valid .auth-form-item.submit {
+    background: rgb(255,85,0);
+}
+
+#user-auth .auth-form .auth-form-item#btn-forgot-password .btn-icon,
+#user-auth .auth-form .auth-form-item.submit .btn-icon {
+    opacity: 0.5;
+}
+
+#user-auth .auth-form .auth-form-item#btn-forgot-password .btn-icon.sent {
+    opacity: 1;
+}
+
+#user-auth .auth-form:valid .auth-form-item.submit .btn-icon {
+    opacity: 1;
+}
+
+
+/* media queries
+  -------------------------------------------------------------------------- */
+
+/*
+    screen width > 768px (tablet, laptop, etc.)
+*/
+@media only screen and (min-width: 768px) {
+    #user-auth #sign-in-container {
+        display: grid;
+        width: 60%;
+    }
+
+    #user-auth .sign-in-item#sign-in-sign-up-box {
+        left: 10%;
+        width: 80%;
+    }
+
+    #user-auth .sign-in-item {
+        grid-template-columns: 20% 80%;
+    }
+
+    #user-auth .sign-in-item-text {
+        font-size: 1rem;
+    }
+
+    #user-auth .auth-form-item {
+        grid-template-columns: 15% 85%;
+    }
+}

@@ -10,7 +10,7 @@
 
 #view-pomodoro {
     display: grid;
-    grid-template-rows: 20% 80%;
+    grid-template-rows: 25% 75%;
 }
 
 #tasks #tasks-header {
@@ -49,6 +49,10 @@
     opacity: 0.6;
 }
 
+#tasks .task-item:last-child {
+    margin-bottom: 44px;
+}
+
 #tasks input[type='text'] {
     background: rgb(37, 37, 37);
     border: none;
@@ -58,11 +62,6 @@
     opacity: 0.8;
     outline: none;
     height: 4.2rem;
-    user-select: auto;
-    -webkit-user-select: auto;  /* Chrome all / Safari all */
-    -moz-user-select: auto;     /* Firefox all */
-    -ms-user-select: auto;      /* IE 10+ */
-    user-select: auto;          /* Likely future */
 }
 
 #tasks input[type='submit'] {
@@ -128,5 +127,9 @@
 
     #tasks .task-item {
         grid-template-columns: 15% 85%;
+    }
+
+    #tasks .task-item:last-child {
+        margin-bottom: 0;
     }
 }

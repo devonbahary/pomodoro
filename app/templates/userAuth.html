@@ -1,0 +1,122 @@
+<!--
+  ■ pomodoro
+      app
+          templates
+              * userAuth.html
+-->
+
+<section id="user-auth">
+    <!-- User Auth Interface -->
+    <aside id="btn-user-auth-container">
+        <!-- Display Name / Sign-In Prompt -->
+        <div id="user-name" class="bga-dark">
+            <span class="txt-heading" ng-show="isUserSignedIn()">{{ displayName }}</span>
+            <span class="txt-heading" ng-show="!isUserSignedIn()">Sign In</span>
+        </div>
+        <!-- Btn: Open User Auth Interface -->
+        <div id="btn-user-auth" class="btn-auth btn bg-darker" ng-click="onBtnOpenInterface()">
+            <span class="ion-person btn-icon txt-body" ng-class="{'txt-signed-in': isUserSignedIn()}"></span>
+        </div>
+        <!-- Btn: Sign-In / Sign-Out -->
+        <div id="btn-sign-in-out" class="btn-auth btn bg-dark" ng-click="isUserSignedIn() ? onBtnSignOut() : onBtnModal()">
+            <span class="btn-icon txt-gray" ng-class="{'ion-log-out': isUserSignedIn(), 'ion-log-in': !isUserSignedIn()}"></span>
+        </div>
+    </aside>
+    <!-- User Sign-In Modal -->
+    <section id="user-auth-modal" class="bga-dark" ng-show="isModalOpen()" ng-click="onBtnModal()">
+        <div id="sign-in-container" class="centered" ng-click="$event.stopPropagation()">
+            <!-- Sign-In Item: Title -->
+            <div id="title" class="sign-in-item bg-darker">
+                <div class="txt-heading">
+                    <span class="centered txt-title">Pomodoro</span>
+                </div>
+            </div>
+            <!-- Sign-In Item: Purpose -->
+            <div class="sign-in-item bg-dark">
+                <div class="sign-in-item-image">
+                    <span class="ion-android-checkbox-outline btn-icon"></span>
+                </div>
+                <div class="sign-in-item-text txt-body">
+                    <span class="centered">Sign up to <strong>keep your tasks</strong> over different sessions.</span>
+                </div>
+            </div>
+            <!-- Sign-In Item: Security -->
+            <div class="sign-in-item bg-dark">
+                <div class="sign-in-item-image">
+                    <span class="ion-locked btn-icon"></span>
+                </div>
+                <div class="sign-in-item-text txt-body">
+                    <span class="centered">
+                        Email and password authentication are handled by <strong><a href="https://firebase.google.com/docs/auth/" target="_blank">Google Firebase</a></strong>.
+                    </span>
+                </div>
+            </div>
+            <!-- Sign-In Item: Sign-In / Sign-Up -->
+            <div id="sign-in-sign-up-box" class="sign-in-item bg-darker">
+                <!-- Sign-In / Sign-Up Toggle Box -->
+                <div id="sign-up-sign-in-toggle-container">
+                    <div id="has-account" class="toggle-item btn active" ng-click="onBtnToggleAccount()"
+                      ng-class="{'bg-gray': isToggleHasAccount(), 'bg-dark': !isToggleHasAccount()}">
+                        <span class="txt-body btn-icon">I have an account.</span>
+                    </div>
+                    <div id="sign-me-up" class="toggle-item btn bg-dark" ng-click="onBtnToggleAccount()"
+                      ng-class="{'bg-gray': !isToggleHasAccount(), 'bg-dark': isToggleHasAccount()}">
+                        <span class="txt-body btn-icon">Sign me up!</span>
+                    </div>
+                    <div id="account-toggle-cursor" class="toggle-item btn">
+                    </div>
+                </div>
+                <div id="auth-form-box">
+                    <!-- Sign-In Form -->
+                    <form id="form" name="form" ng-submit="onFormSubmit()" class="auth-form">
+                        <!-- Input: Email -->
+                        <div id="input-display-name-container" ng-show="!isToggleHasAccount()"class="auth-form-item bg-dark">
+                            <div class="auth-form-item-image">
+                                <span class="ion-person btn-icon"></span>
+                            </div>
+                            <input type="text" ng-model="inputDisplayName" placeholder="display name" minlength="4" ng-required="!isToggleHasAccount()">
+                        </div>
+                        <!-- Input: Email -->
+                        <div id="input-email-container" class="auth-form-item bg-dark">
+                            <div class="auth-form-item-image">
+                                <span class="ion-email btn-icon"></span>
+                            </div>
+                            <input name="email" type="email" ng-model="inputEmail" placeholder="email address" required>
+                        </div>
+                        <!-- Input: Password -->
+                        <div id="input-password-container" class="auth-form-item bg-dark">
+                            <div class="auth-form-item-image">
+                                <span class="ion-locked btn-icon"></span>
+                            </div>
+                            <input id="input-password" name="password" type="password" ng-model="inputPassword" placeholder="password" minlength="6" required>
+                            <span id="icon-hide-password" ng-click="onBtnToggleHidePassword()"
+                              ng-class="{'ion-eye-disabled': isHidePassword(), 'ion-eye': !isHidePassword()}">
+                            </span>
+                        </div>
+                        <div class="auth-form-item split">
+                            <!-- Forgot Password -->
+                            <div>
+                                <div id="btn-forgot-password" class="auth-form-item btn" ng-show="isToggleHasAccount()"
+                                  ng-click="onBtnPasswordReset()" ng-class="{'bg-dark': form.email.$invalid, 'bg-gray': form.email.$valid}">
+                                    <span class="txt-body btn-icon sent" ng-show="isEmailSent()">Email Sent!</span>
+                                    <span class="txt-body btn-icon" ng-show="!isEmailSent() && !isAttemptingEmailReset()">Forgot password</span>
+                                    <span class="txt-body btn-icon" ng-show="isAttemptingEmailReset()">Requesting Email..</span>
+                                </div>
+                            </div>
+                            <!-- Input: Submit -->
+                            <label class="auth-form-item submit btn bg-dark">
+                              <input type="submit" value="">
+                              <!-- Sign In / Signing In -->
+                              <span class="txt-body btn-icon" ng-show="isToggleHasAccount() && !isAttemptingAuth()">Sign In</span>
+                              <span class="txt-body btn-icon" ng-show="isToggleHasAccount() && isAttemptingAuth()">Signing In..</span>
+                              <!-- Sign Up / Signing Up -->
+                              <span class="txt-body btn-icon" ng-show="!isToggleHasAccount() && !isAttemptingAuth()">Sign Up</span>
+                              <span class="txt-body btn-icon" ng-show="!isToggleHasAccount() && isAttemptingAuth()">Signing Up..</span>
+                            </lable>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+</section>

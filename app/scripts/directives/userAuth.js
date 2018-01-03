@@ -259,6 +259,9 @@
             scope.onFormSubmit = function() {
                 attemptingAuth = true;
                 resetFormErrors();
+                document.getElementById('input-display-name').blur();
+                document.getElementById('input-email').blur();
+                document.getElementById('input-password').blur();
                 var displayName = scope.inputDisplayName;
                 var email = scope.inputEmail;
                 var password = scope.inputPassword;

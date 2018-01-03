@@ -223,13 +223,25 @@
     border-right: 1px solid rgb(50, 50, 50);
 }
 
+
+#user-auth .input-container {
+    position: relative;
+}
+
 #user-auth input {
+    position: relative;
+    display: inline-block;
     background: none;
-    border: none;
     padding: 0 6px;
+    border: none;
     outline: none;
     line-height: 2rem;
-    height: 2rem;
+    width: 100%;
+    height: 100%;
+}
+
+#user-auth #input-password {
+    width: 90%;
 }
 
 #user-auth #icon-hide-password {

@@ -74,24 +74,29 @@
                             <div class="auth-form-item-image">
                                 <span class="ion-person btn-icon"></span>
                             </div>
-                            <input type="text" ng-model="inputDisplayName" placeholder="display name" minlength="4" ng-required="!isToggleHasAccount()">
+                            <div class="input-container">
+                                <input id="input-display-name" type="text" ng-model="inputDisplayName" placeholder="display name" minlength="4" ng-required="!isToggleHasAccount()">
+                            </div>
                         </div>
                         <!-- Input: Email -->
                         <div id="input-email-container" class="auth-form-item bg-dark">
                             <div class="auth-form-item-image">
                                 <span class="ion-email btn-icon"></span>
                             </div>
-                            <input name="email" type="email" ng-model="inputEmail" placeholder="email address" required>
+                            <div class="input-container">
+                                <input id="input-email" name="email" type="email" ng-model="inputEmail" placeholder="email address" required>
+                            </div>
                         </div>
                         <!-- Input: Password -->
                         <div id="input-password-container" class="auth-form-item bg-dark">
                             <div class="auth-form-item-image">
                                 <span class="ion-locked btn-icon"></span>
                             </div>
-                            <input id="input-password" name="password" type="password" ng-model="inputPassword" placeholder="password" minlength="6" required>
-                            <span id="icon-hide-password" ng-click="onBtnToggleHidePassword()"
-                              ng-class="{'ion-eye-disabled': isHidePassword(), 'ion-eye': !isHidePassword()}">
-                            </span>
+                            <div class="input-container">
+                                <input id="input-password" name="password" type="password" ng-model="inputPassword" placeholder="password" minlength="6" required>
+                                <span id="icon-hide-password" ng-click="onBtnToggleHidePassword()" ng-class="{'ion-eye-disabled': isHidePassword(), 'ion-eye': !isHidePassword()}">
+                                </span>
+                            </div>
                         </div>
                         <div class="auth-form-item split">
                             <!-- Forgot Password -->

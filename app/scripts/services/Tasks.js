@@ -19,26 +19,34 @@
         var Tasks = {};
 
         /*
-                → the Firebase database reference to 'tasksActive' data
+            refTasksActive()
+                => Returns the firebase reference where the user's active tasks
+                  are located.
         */
-        var refTasksActive = firebase.database().ref('/tasksActive');
+        function refTasksActive() {
+            return firebase.database().ref('/' + firebase.auth().currentUser.uid + '/tasksActive');
+        }
 
         /*
-                → the Firebase database reference to 'tasksCompleted' data
+            refTasksCompleted()
+                => Returns the firebase reference where the user's completed tasks
+                  are located.
         */
-        var refTasksCompleted = firebase.database().ref('/tasksCompleted');
+        function refTasksCompleted() {
+            return firebase.database().ref('/' + firebase.auth().currentUser.uid + '/tasksCompleted');
+        }
 
         /*
-            ($firebaseArray)
-                → a $firebaseArray of active task objects
+            (Array or $firebaseArray)
+                → an array / $firebaseArray (on user sign-in) of active task objects
         */
-        Tasks.active = $firebaseArray(refTasksActive);
+        Tasks.active = [];
 
         /*
-            ($firebaseArray)
-                → a $firebaseArray of completed task objects
+            (Array or $firebaseArray)
+                → an array / $firebaseArray (on user sign-in) of completed task objects
         */
-        Tasks.completed = $firebaseArray(refTasksCompleted);
+        Tasks.completed = [];
 
         /*
             Tasks.addTask(String)
@@ -46,10 +54,15 @@
                   database, including a timestamp for ordering.
         */
         Tasks.addTask = function(name) {
-            Tasks.active.$add({
+            var newTask = {
                 name: name,
                 timestamp: firebase.database.ServerValue.TIMESTAMP
-            });
+            };
+            if (firebase.auth().currentUser) {
+                Tasks.active.$add(newTask);
+            } else {
+                Tasks.active.push(newTask);
+            }
         }
 
         /*
@@ -59,11 +72,18 @@
                   new timestamp.
         */
         Tasks.completeTask = function(item) {
-            Tasks.active.$remove(item);
-            Tasks.completed.$add({
+            var completeTask = {
                 name: item.name,
                 timestamp: firebase.database.ServerValue.TIMESTAMP
-            });
+            }
+            if (firebase.auth().currentUser) {
+                Tasks.active.$remove(item);
+                Tasks.completed.$add(completeTask);
+            } else {
+                var index = Tasks.active.indexOf(item);
+                Tasks.active.splice(index, 1);
+                Tasks.completed.push(completeTask);
+            }
         }
 
         /*
@@ -72,8 +92,24 @@
                   the completed tasks database.
         */
         Tasks.destroyTask = function(item) {
-            Tasks.completed.$remove(item);
+            if (firebase.auth().currentUser) {
+                Tasks.completed.$remove(item);
+            } else {
+                var index = Tasks.completed.indexOf(item);
+                Tasks.completed.splice(index, 1);
+            }
         }
+
+
+        firebase.auth().onAuthStateChanged(function(user) {
+            if (user) {
+                Tasks.active = $firebaseArray(refTasksActive());
+                Tasks.completed = $firebaseArray(refTasksCompleted());
+            } else {
+                Tasks.active = [];
+                Tasks.completed = [];
+            }
+        });
 
         return Tasks;
     }

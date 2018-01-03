@@ -12,18 +12,11 @@
 (function() {
     function PomodoroCtrl(Tasks) {
         /*
-            ($firebaseArray)
-                → a $firebaseArray of active task objects from the 'Tasks'
-                  service
+            (Object)
+                → the 'Tasks' service, from which we can access properties
+                  'active' + 'completed' task arrays
         */
-        this.activeTasks = Tasks.active;
-
-        /*
-            ($firebaseArray)
-                → a $firebaseArray of completed task objects from the 'Tasks'
-                  service
-        */
-        this.completedTasks = Tasks.completed;
+        this.tasks = Tasks;
 
         /*
             this.submit(String)

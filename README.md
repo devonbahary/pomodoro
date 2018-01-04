@@ -1,107 +1,62 @@
-## Bloc Frontend Project Starter
+# [Pomodoro](https://kind-lovelace-b7595b.netlify.com/)
 
-A starter application for student projects in Bloc's [Frontend Web Development Course](https://www.bloc.io/frontend-development-bootcamp).
+#### A web app for enhanced productivity!
 
-## Pull Down the Code
+<img src="/app/assets/gifs/example.gif">
 
-Start by cloning the repository:
-
-```
-$ git clone https://github.com/Bloc/bloc-frontend-project-starter.git <your-frontend-project-name>
-```
-
-## Reset Git
-
-This will be your personal project. So all of the past commit history that we used to build this starter app aren't needed. Also you will want to be able to push/pull code from your personal remote (Github) repository and NOT Bloc's remote (Github) repository.
-
-Remove the existing local Git repository:
-
-```
-$ rm -r -f .git
-```
-
-Initialize a new Git repository, add all of these existing files, and commit them:
-
-```
-$ git init
-$ git add .
-$ git commit -m "initial commit"
-```
-
-Go to Github and create a new repository. Add that new repository as the proper remote. Then push your initial commit.
-
-```
-$ git remote add origin <URL TO NEW GITHUB REPO>
-$ git push origin master
-```
-
-## Configuration
-
-The project uses Node to run a JS server in development. This will be important when we want to use urls /album or /collection instead of the basic album.html or collection.html. It may  help to review [our resource on NPM and `package.json` files](https://www.bloc.io/resources/npm-and-package-json).
-
-Install the project dependencies by running:
-
-```
-$ npm install
-```
-
-## Run the Application
-
-Run the application server:
-
-```
-$ npm start
-```
-
-The server will start up. To stop the server, press `cntrl + c`.
+* Based on the popular **[Pomodoro Technique](https://en.wikipedia.org/wiki/Pomodoro_Technique)**:
+  * Assign yourself a **to-do list** for your work session.
+  * Organize your work flow into periods of **work** and **breaks**.
+  * Use this Pomodoro web app to track your **ambitions** and **accomplishments** for any given work session while **managing your time** meaningfully.
 
 
-## Use in Brackets Live Preview
 
-To use the application with the Live Preview functionality of the Brackets text editor, go to __File > Project Settings__ and add `http://localhost:3000` to the Base URL field.
+## Welcome To Better Time Management
+<img src="/app/assets/images/interface.png">
 
-![Screenshot of project settings URL in Brackets](https://bloc-global-assets.s3.amazonaws.com/images-frontend/screenshots/bloc-frontend-project-starter/live_preview_project_settings.png)
+* Work flow is broken into **work** and **break** sessions:
+  * **Work** session [25min]
+  * **Break** session [5min]
+  * **Long Break** session [30min] (after every 4th completed **work** session)
 
-The text in the application will not update on every keystroke, but changes will automatically push when you save the file.
+## 1. Add Tasks
+<img src="/app/assets/gifs/addtasks.gif">
 
-## Directory Structure
+* Visualized **tasks** help reinforce the **purpose** and **intent** of your work session while lending some **estimation** of the path in front of you:
+  * Type new tasks into the **task pane** on the left
+  * Press **Enter** or click on the **+** button to add them to your active tasks
 
-```
-├── LICENSE
-├── README.md
-├── app
-│   ├── assets
-│   │   └── images
-│   │       └── bloc-logo-white.png
-│   ├── pages
-│   │   └── index.html
-│   ├── scripts
-│   │   └── app.js
-│   ├── styles
-│   │   └── style.css
-│   └── templates
-│       └── home.html
-├── package.json
-└── server.js
-```
+## 2. Start the Timer
+<img src="/app/assets/gifs/startworksession.gif">
 
 
-### Assets/Images
+## 3. Mark Tasks Completed
+<img src="/app/assets/gifs/completetasks.gif">
 
-Add images to the `app/assets/images` directory. To reference images in HTML, use the path `/assets/images/<image file name>.jpg`. For example, to include the image called `bloc-white-logo.png`, the path for the `src` attribute in the HTML would be:
+* When you're finished with a task, you can mark them **completed** by selecting the **checkbox** to its left.
 
-```html
-<img src="/assets/images/bloc-white-logo.png">
-```
+* **Completed tasks** will gather at the **bottom** of the list of **active tasks**, offering visualization of your accomplishments and a sense of the part of the hill climbed.
 
-__Note:__ A sample image has been added to `app/images`. To remove the image from the application, run the following command from the root of repo:
+* To dismiss your **completed tasks**, select the **trash** icon.
 
-```bash
-$ rm -f app/assets/images/bloc-white-logo.png
-```
 
-To reference any other assets, like the music in Bloc Jams, use the path `assets/<asset-type>/<asset-file-name>`.
+## 4. Take a Break
+<img src="/app/assets/images/break.png">
 
-### Difference between Pages and Templates
+* Once you've **completed** a work session, it's time to **take a break**! The timer will **reset** to the appropriate break session:
+  * **Break** [5mins]
+  * **Long Break** [30mins] (after every 4th completed **work** session)
+* You have the option to skip your break if you're feeling extra ambitious.
 
-The `templates` directory should hold any HTML files used as templates in Angular states configured by UI Router. All other HTML files belong in the `pages` directory.
+
+## Persistent Tasks
+<img src="/app/assets/gifs/signup.gif">
+
+* **Guest users** can benefit in much the same ways as their counterparts, but by personalizing your experience with an **account**, you can **keep your tasks** from session to session.
+
+* **User Authentication** is handled by **[Google Firebase](https://firebase.google.com/docs/auth/)**.
+
+## Responsive Design
+<img src="/app/assets/images/mobile.png">
+
+* And of course, take the Pomodoro web app with you, thanks to its **mobile-first design** approach.

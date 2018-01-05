@@ -88,7 +88,7 @@
     font-size: 1.4rem;
     border-top-left-radius: 4px;
     z-index: 2;
-    border: 1px solid rgb(50, 50, 50);
+    box-shadow: 0 0 10px 1px black;
 }
 
 
@@ -114,5 +114,11 @@
 
     #pomodoro-info .info-text {
         font-size: 1rem;
+    }
+
+    #pomodoro-info #btn-info {
+        width: 66px; height: 66px;
+        text-align: center;
+        line-height: 66px;
     }
 }

@@ -175,6 +175,15 @@
                 return pauseState;
             }
 
+            /*
+                => reset timer on user sign-out
+            */
+            firebase.auth().onAuthStateChanged(function(user) {
+                if (!user) {
+                    resetTimer();
+                }
+            })
+
         }
 
 

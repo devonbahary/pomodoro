@@ -116,7 +116,7 @@
   -------------------------------------------------------------------------- */
 
 /*
-    screen width > 768px (tablet, laptop, etc.)
+    screen width > 768px (tablet)
 */
 @media only screen and (min-width: 768px) {
     #pomodoro-timer #timer-container {
@@ -126,11 +126,13 @@
         height: 25%;
     }
 
-    #pomodoro-timer #timer {
-        font-size: 4.5rem;
-    }
-
     #pomodoro-timer #btn-timer {
         font-size: 2rem;
+    }
+}
+
+@media only screen and (min-width: 1224px) {
+    #pomodoro-timer #timer {
+        font-size: 4.5rem;
     }
 }

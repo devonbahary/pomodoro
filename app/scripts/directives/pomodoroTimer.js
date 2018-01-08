@@ -10,7 +10,7 @@
 */
 
 (function() {
-    function pomodoroTimer($interval, INTERVAL_WORK, INTERVAL_BREAK, INTERVAL_LONG_BREAK) {
+    function pomodoroTimer($interval, $rootScope, INTERVAL_WORK, INTERVAL_BREAK, INTERVAL_LONG_BREAK) {
         function timer(scope, element, attrs) {
 
             /*
@@ -71,7 +71,12 @@
                     if (!scope.timerCount) {
                       $interval.cancel(timer);
                       workCompleted = !workCompleted;
-                      if (workCompleted) { completedWorkSessions++; }
+                      if (workCompleted) {
+                          completedWorkSessions++;
+                          $rootScope.$broadcast('endedWork', scope.isLongBreak());
+                      } else {
+                          $rootScope.$broadcast('endedBreak');
+                      }
                       resetTimer();
                       audioChime.play();
                       return;
@@ -106,6 +111,7 @@
             */
             scope.onBtnTimer = function() {
                 scope.isIdle() ? beginTimer() : resetTimer();
+                !workCompleted ? $rootScope.$broadcast('startedWork') : $rootScope.$broadcast('startedBreak');
             }
 
             /*
@@ -197,6 +203,6 @@
 
     angular
         .module('pomodoro')
-        .directive('pomodoroTimer', ['$interval', 'INTERVAL_WORK', 'INTERVAL_BREAK',
-          'INTERVAL_LONG_BREAK', pomodoroTimer]);
+        .directive('pomodoroTimer', ['$interval', '$rootScope', 'INTERVAL_WORK',
+          'INTERVAL_BREAK', 'INTERVAL_LONG_BREAK', pomodoroTimer]);
 })();

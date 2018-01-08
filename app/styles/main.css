@@ -83,6 +83,10 @@
     background: rgba(25, 25, 25, 0.7);
 }
 
+.bga-darker {
+    background: rgba(0, 0, 0, 0.7);
+}
+
 
 body {
     background-image: url('/assets/images/clock_bg.png');

@@ -94,7 +94,7 @@
             }
 
             /*
-                attemptSignIn()
+                attemptSignIn(String, String)
                     => Attempts to sign in user with form email + password,
                       highlighting input elements according to errors returned.
             */
@@ -118,7 +118,7 @@
             }
 
             /*
-                attemptSignUp()
+                attemptSignUp(String, String, String)
                     => Attempts to sign up user with form email + password,
                       highlighting input elements according to errors returned.
             */

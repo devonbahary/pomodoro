@@ -79,6 +79,41 @@
     text-align: center;
 }
 
+#pomodoro-info #walkthrough-msg {
+    position: absolute;
+    left: -100%;
+    top: 70%;
+    min-width: 30%;
+    max-width: 100%;
+    line-height: 2.5rem;
+    transform: translateY(-50%);
+    padding: 6px 12px;
+    padding-right: 36px;
+    font-size: 1.4rem;
+    box-shadow: 0 0 10px 1px black;
+    -webkit-transition: left 1s;
+    transition: left 1s;
+}
+
+#pomodoro-info #walkthrough-msg #btn-rmv-msg {
+    position: absolute;
+    right: 12px;
+    opacity: 0.6;
+    cursor: pointer;
+}
+
+#pomodoro-info #walkthrough-msg #btn-rmv-msg:hover {
+    opacity: 1;
+}
+
+#pomodoro-info #display-msg .ion-android-stopwatch {
+    text-shadow: 3px 0 rgb(216, 0, 0);
+}
+
+#pomodoro-info #display-msg .ion-android-walk {
+    text-shadow: 5px 0 rgb(46, 139, 87);
+}
+
 #pomodoro-info #btn-info {
     position: fixed;
     right: 0; bottom: 0;
@@ -114,6 +149,11 @@
 
     #pomodoro-info .info-text {
         font-size: 1rem;
+    }
+
+    #pomodoro-info #walkthrough-msg {
+        min-width: 30%;
+        max-width: 40%;
     }
 
     #pomodoro-info #btn-info {

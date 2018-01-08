@@ -67,6 +67,11 @@
         </div>
 
     </section>
+    <!-- Walkthrough Messages -->
+    <aside id="walkthrough-msg" class="bga-darker txt-body">
+        <span id="btn-rmv-msg" class="ion-close-round" ng-click="onBtnRmvMsg()" ng-show="hasBtnRmvMsg()"></span>
+        <span id="display-msg"></span>
+    </aside>
     <!-- Btn: Info Modal -->
     <footer id="btn-info" class="btn" ng-click="onBtnModal()" ng-class="{'bg-dark': !isModalOpen(), 'bg-gray': isModalOpen()}">
         <span class="ion-help"></span>

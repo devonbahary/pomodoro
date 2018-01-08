@@ -10,7 +10,7 @@
 */
 
 (function() {
-    function Tasks($firebaseArray) {
+    function Tasks($firebaseArray, $rootScope) {
 
         /*
             (Object)
@@ -63,6 +63,7 @@
             } else {
                 Tasks.active.push(newTask);
             }
+            $rootScope.$broadcast('addedTask');
         }
 
         /*
@@ -116,5 +117,5 @@
 
     angular
         .module('pomodoro')
-        .factory('Tasks', ['$firebaseArray', Tasks]);
+        .factory('Tasks', ['$firebaseArray', '$rootScope', Tasks]);
 })();

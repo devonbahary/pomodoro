@@ -34,7 +34,7 @@
           INTERVAL_WORK : time in seconds for pomodoro work period
           INTERVAL_BREAK : time in seconds for pomodoro break period
     */
-    app.constant('INTERVAL_WORK', 1500);
-    app.constant('INTERVAL_BREAK', 300);
-    app.constant('INTERVAL_LONG_BREAK', 1800);
+    app.constant('INTERVAL_WORK', 3); //1500);
+    app.constant('INTERVAL_BREAK', 2); //300);
+    app.constant('INTERVAL_LONG_BREAK', 4); //1800);
 })();

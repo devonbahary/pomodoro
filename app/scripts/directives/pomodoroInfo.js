@@ -188,13 +188,14 @@
             /*
                 => Introductory welcome walkthrough instructions.
             */
-            $timeout(function() {
-                if (!firebase.auth().currentUser) {
-                    displayWalkthroughMessage("Welcome to Pomodoro.<br>Let's get work done.")
-                    displayWalkthroughMessage("It's simple:<br>1. Add tasks<br>2. Work for 25min<br>3. Take a break<br>4. Repeat")
-                    displayWalkthroughMessage("Ready to get started?<br>Add tasks with the task pane above.", true);
-                }
-            }, 2000);
+            if (!firebase.auth().currentUser) {
+                $timeout(function() {
+                  displayWalkthroughMessage("Welcome to Pomodoro.<br>Let's get work done.")
+                  displayWalkthroughMessage("It's simple:<br>1. Add tasks<br>2. Work for 25min<br>3. Take a break<br>4. Repeat")
+                  displayWalkthroughMessage("Ready to get started?<br>Add tasks with the task pane above.", true);
+                }, 2000);
+            }
+
 
             /* EVENT LISTENERS
               -------------------------------------------------------------- */
@@ -202,7 +203,7 @@
                 => Walkthrough message after adding a task
             */
             $rootScope.$on('addedTask', function() {
-                if (!shownAddedTaskWalkthrough) {
+                if (!firebase.auth().currentUser && !shownAddedTaskWalkthrough) {
                     function onAddedTask() {
                         var message = "Nice! Add some more, or begin your first <span class='ion-android-stopwatch'></span> work session with the timer.";
                         displayWalkthroughMessage(message, true);
@@ -225,7 +226,7 @@
                 => Walkthrough message after starting work
             */
             $rootScope.$on('startedWork', function() {
-                if (!shownStartedWorkWalkthrough) {
+                if (!firebase.auth().currentUser && !shownStartedWorkWalkthrough) {
                     function onStartedWork() {
                         var message = "Alright, time to focus. No distractions until the timer's up.<br><span class='sub-txt'><span class='ion-android-checkbox-outline'></span> Mark tasks completed<br><span class='ion-trash-b'></span> Clear them altogether.</span>";
                         displayWalkthroughMessage(message, true);
@@ -249,7 +250,7 @@
                 => Walkthrough message after ending work
             */
             $rootScope.$on('endedWork', function(event, data) {
-                if (!shownEndedWorkWalkthrough || !shownEndedWorkLongBreakWalkthrough) {
+                if (!firebase.auth().currentUser && (!shownEndedWorkWalkthrough || !shownEndedWorkLongBreakWalkthrough)) {
                     function onEndedWork() {
                         var message = "Good job! Take 5 to stretch, grab your phone, take a walk, etc.<br><span class='sub-txt'>(Hit the <span class='ion-android-walk'></span> break timer to start.)</span>";
                         displayWalkthroughMessage(message, true);
@@ -290,7 +291,7 @@
                 => Walkthrough message after starting break
             */
             $rootScope.$on('startedBreak', function() {
-                if (!shownStartedBreakWalkthrough) {
+                if (!firebase.auth().currentUser && !shownStartedBreakWalkthrough) {
                     function onStartedBreak() {
                         var message = "Managing the time we have to focus on our work and take breaks helps us do <strong>both</strong> better.<br><span style='opacity: 0.8';>(Another 25 minutes of work after this.)</span>";
                         displayWalkthroughMessage(message, true);
@@ -314,7 +315,7 @@
                 => Walkthrough message after ending a break
             */
             $rootScope.$on('endedBreak', function() {
-                if (!shownEndedBreakWalkthrough) {
+                if (!firebase.auth().currentUser && !shownEndedBreakWalkthrough) {
                     function onEndedBreak() {
                         var message = "Relaxed? Good. Time to focus!<br>I think you've got the hang of this.";
                         displayWalkthroughMessage(message, true);

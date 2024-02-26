@@ -1,62 +1,58 @@
-# [Pomodoro](https://kind-lovelace-b7595b.netlify.com/)
+# Pomodoro
+Enhance your productivity.
 
-#### A web app for enhanced productivity!
+<img src="./app/assets/gifs/example.gif">
 
-<img src="/app/assets/gifs/example.gif">
-
-* Based on the popular **[Pomodoro Technique](https://en.wikipedia.org/wiki/Pomodoro_Technique)**:
-  * Assign yourself a **to-do list** for your work session.
-  * Organize your work flow into periods of **work** and **breaks**.
-  * Use this Pomodoro web app to track your **ambitions** and **accomplishments** for any given work session while **managing your time** meaningfully.
+### Tech
+* Angular
+* [Google Firebase](https://firebase.google.com/docs/auth/) Authentication
 
 
+---
 
-## Welcome To Better Time Management
-<img src="/app/assets/images/interface.png">
+Built on the popular **[Pomodoro Technique](https://en.wikipedia.org/wiki/Pomodoro_Technique)**.
 
-* Work flow is broken into **work** and **break** sessions:
-  * **Work** session [25min]
-  * **Break** session [5min]
-  * **Long Break** session [30min] (after every 4th completed **work** session)
+<img src="./app/assets/images/pomodoro.png">
 
-## 1. Add Tasks
-<img src="/app/assets/gifs/addtasks.gif">
+## Welcome to Better Time Management
 
-* Visualized **tasks** help reinforce the **purpose** and **intent** of your work session while lending some **estimation** of the path in front of you:
-  * Type new tasks into the **task pane** on the left
-  * Press **Enter** or click on the **+** button to add them to your active tasks
+Your new workflow is broken into **work** and **break** sessions:
+  * **Work** session [25 mins]
+  * **Break** session [5 mins]
+  * **Long Break** session [30 mins] (every 4th **break**)
 
-## 2. Start the Timer
-<img src="/app/assets/gifs/startworksession.gif">
+## Start By Adding Tasks
+<img src="./app/assets/gifs/addtasks.gif">
 
-
-## 3. Mark Tasks Completed
-<img src="/app/assets/gifs/completetasks.gif">
-
-* When you're finished with a task, you can mark them **completed** by selecting the **checkbox** to its left.
-
-* **Completed tasks** will gather at the **bottom** of the list of **active tasks**, offering visualization of your accomplishments and a sense of the part of the hill climbed.
-
-* To dismiss your **completed tasks**, select the **trash** icon.
+Explicitly defining a list of tasks prior to beginning work can help reinforce the purpose and intent of your work session while lending some estimation of the path ahead.
 
 
-## 4. Take a Break
-<img src="/app/assets/images/break.png">
-
-* Once you've **completed** a work session, it's time to **take a break**! The timer will **reset** to the appropriate break session:
-  * **Break** [5mins]
-  * **Long Break** [30mins] (after every 4th completed **work** session)
-* You have the option to skip your break if you're feeling extra ambitious.
+## Start the Timer
+<img src="./app/assets/gifs/startworksession.gif">
 
 
-## Persistent Tasks
-<img src="/app/assets/gifs/signup.gif">
+## Mark Tasks Complete
+<img src="./app/assets/gifs/completetasks.gif">
 
-* **Guest users** can benefit in much the same ways as their counterparts, but by personalizing your experience with an **account**, you can **keep your tasks** from session to session.
+Select a task's **checkbox** to the left to mark it as **complete**.
 
-* **User Authentication** is handled by **[Google Firebase](https://firebase.google.com/docs/auth/)**.
+**Completed tasks** make their way to the bottom of the list to draw attention to what's next as well as creating a feeling of accomplishment.
 
-## Responsive Design
-<img src="/app/assets/images/mobile.png">
+Click the **trash** icon to dismiss a completed task. 
 
-* And of course, take the Pomodoro web app with you, thanks to its **mobile-first design** approach.
+## Take a Break
+<img src="./app/assets/images/break.png">
+
+The app will **chime** once you've completed a work session to tell you it's time to **take a break**! 
+
+The timer will **reset** to the appropriate break session based on how many work cycles you've completed:
+  * **Break** [5 mins]
+  * **Long Break** [30 mins] (every 4th **break**)
+
+**Skip** the break session by clicking the running man if you're feeling extra ambitious.
+
+
+## Persistent Tasks with Authentication
+<img src="./app/assets/gifs/signup.gif">
+
+Sign into the application if you want to persist your tasks from session to session.
